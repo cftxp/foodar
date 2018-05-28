@@ -1,0 +1,14 @@
+h1 {
+	background-color: hsla(360, 75%, 25%, 0.5);
+	color: #ffcc00;
+}
+
+h3+p {
+	background-color: brown;
+	color: white;
+}
+
+h3 {
+	color: rgba(255, 205, 205, 1);
+	background-color: hsl(360, 50%, 50%);
+}

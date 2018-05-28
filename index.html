@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Foodar</title>
+	<style>
+		* {
+			box-sizing: content-box;
+			font-family: Arial, Helvetica, sans serif;
+		}
+		html {
+			height: 100%;
+		}
+		body {
+			height: 100%;
+		}
+		a {
+			text-decoration: none;
+			color: black;
+		}
+		a:hover {
+			text-decoration: underline;
+			color: rgb(0, 0, 255);
+		}
+		#banner {
+			width: 100%;
+			height: 88px;
+			background: white;
+			background: url("images/background.png") center left no-repeat;
+			background-size: 100%;
+			display: none;
+			clear: both;
+			position: relative;
+		}
+			#banner > #x {
+				display: block;
+				right: 0;
+				top: 0;
+				position: absolute;
+				margin: 0;
+			}
+				#banner > #x:hover {
+					color: white;
+					background: black;
+					cursor: pointer;
+				}
+			#banner > a > span {
+				font-size: 2em;
+				padding-left: 2.5em;
+				padding-top: 1em;
+			}
+			#banner > a > p {
+				text-align: right;
+				padding-right: 10%;
+			}
+			a.link {
+				color: rgba(255, 255, 255, 0.75);
+				text-shadow: 0.1em 0.1em rgb(0, 0, 0);
+			}
+			a.link:hover {
+				color: rgba(0, 0, 0, 0.6);
+				text-shadow: 0.1em 0.1em rgb(255, 255, 255);
+				text-decoration: none;
+			}
+		header {
+			width: 100%;
+			display: block;
+			clear: both;
+			height: 100px;
+		}
+			.head {
+				display: inline-block;
+				float: left;
+				box-sizing: content-box;
+				width: 45%;
+			}
+			#navOne img {
+				padding-left: 20%;
+				margin: 0;
+				box-sizing: content-box;
+			}
+			#navTwo {
+				text-align: right;
+				padding-top: 2em;
+				padding-right: 10%;
+				margin: 0;
+				box-sizing: content-box;
+			}
+				#navTwo a {
+					text-decoration: underline;
+					color: blue;
+				}
+				#navTwo a:hover {
+					text-decoration: none;
+					color: black;
+				}
+		#main {
+			width: 90%;
+			margin: 0 auto;
+			padding-bottom: 1em;
+			box-sizing: content-box;
+		}
+			input {
+				padding: 1em;
+			}
+		#hero {
+			width: 100%;
+			height: 300px;
+			background: url("images/03.jpg") center center no-repeat;
+			background-size: 100%;
+		}
+		footer {
+			width: 100%;
+			border-top: solid 1px black;
+		}
+			div.bottom {
+				width: 33.3%;
+				display: inline-block;
+				float: left;
+				box-sizing: content-box;
+			}
+			div.bottom ul {
+				list-style-type: none;
+				padding: 0;
+			}
+			#footerTwo {
+				text-align: center;
+			}
+			#footerThree {
+				text-align: right;
+			}
+	</style>
+</head>
+<body>
+	<nav>
+		<div id="banner"><button id="x">X</button><a href="http://fornesa.co" target="_blank" class="link"><span id="headline"></span></a><a href="http://fornesa.co" target="_blank" class="link"><p id="tagline"></p></a></div></a>
+		<header>
+			<div class="head" id="navOne"><a href="index.html"><img src="images/logo.png" alt="The logo for Foodar" /></a></div>
+			<div class="head" id="navTwo"><a href="register.html">Sign-in / Register</a> | <a href="about.html">How it Works!</a></div>
+		</header>
+		<div id="main">
+			<div id="hero">&nbsp;</div>
+			<div>
+				<h1>Find a driver near you!</h1>
+				<p id="display">Type in your zipcode below and click Go! to find a driver near you</p>
+			</div>
+			<div>
+				<form action="#" id="myForm">
+					<input type="text" placeholder="11111" maxlength="5" id="zipcode"/>
+					<input type="submit" id="go" value="Go">
+				</form>
+			</div>
+		</div>
+		<footer>
+			<div class="bottom" id="footerOne">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="register.html">Register</a></li>
+					<li><a href="about.html">How it all works</a></li>
+				</ul>
+			</div>
+			<div class="bottom" id="footerTwo">
+				<ul>
+					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="#">Terms and Conditions</a></li>
+				</ul>
+			</div>
+			<div class="bottom" id="footerThree">
+				<ul>
+					<li><a href="#">Lucky you :)</a></li>
+				</ul>
+			</div>
+		</footer>
+		<script>
+			var banner = document.getElementById("banner");
+			var link = document.getElementsByClassName("link");
+			var x = document.getElementById("x");
+			var headline = document.getElementById("headline");
+			var tagline = document.getElementById("tagline");
+
+			var display = document.getElementById("display");
+			var form = document.getElementById("myForm");
+			var zipcode;
+			var go = document.getElementById("go");
+			var zipList = [];
+			zipList.push("77477");
+
+			headline.innerHTML = "Chris Fornesa. Hire a pro.";
+			tagline.innerHTML = "See why.";
+
+			x.addEventListener("click", hideBanner);
+
+			function displayBanner(){
+				banner.style.display = "block";
+			}
+
+			function hideBanner(){
+				banner.style.display = "none";
+			}
+
+			setTimeout(displayBanner, 5000);
+
+			form.addEventListener("submit", checkZip);
+
+			function checkZip(){
+				zipcode = document.getElementById("zipcode").value
+				for(i = 0; i < zipList.length; i++){
+					if(zipList[i] == zipcode){
+						display.innerHTML = "We've got your area covered";
+					} else {
+						display.innerHTML = "Sorry, we haven't expanded to that area yet.";
+					}
+				}
+			}
+		</script>
+	</nav>
+</body>
+</html>

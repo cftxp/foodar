@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Register</title>
+		<style>
+			* {
+				box-sizing: content-box;
+				font-family: Arial, Helvetica, sans serif;
+			}
+			html {
+				height: 100%;
+			}
+			body {
+				height: 100%;
+			}
+			a {
+				text-decoration: none;
+				color: black;
+			}
+			a:hover {
+				text-decoration: underline;
+				color: rgb(0, 0, 255);
+			}
+				h5 {
+					vertical-align: top;
+				}
+				input {
+					padding: 1em;
+					width: 100%;
+					box-sizing: border-box;
+				}
+				.row {
+					width: 100%;
+					padding: 0;
+					box-sizing: border-box;
+				}
+				.colone {
+					float: left;
+					width: 50%;
+					box-sizing: border-box;
+				}
+				.coltwo {
+					float: right;
+					width: 50%;
+					box-sizing: border-box;
+				}
+			header {
+				width: 100%;
+				display: block;
+				clear: both;
+				height: 100px;
+			}
+			#main {
+				width: 90%;
+				margin: 0 auto;
+				padding-bottom: 1em;
+				box-sizing: content-box;
+			}
+				#title {
+					text-align: center;
+				}
+				input {
+					padding: 1em;
+				}
+			footer {
+				width: 100%;
+				border-top: solid 1px black;
+			}
+				div.bottom {
+					width: 33.3%;
+					display: inline-block;
+					float: left;
+					box-sizing: content-box;
+				}
+				div.bottom ul {
+					list-style-type: none;
+					padding: 0;
+				}
+				#footerTwo {
+					text-align: center;
+				}
+				#footerThree {
+					text-align: right;
+				}
+		</style>
+	</head>
+
+	<body>
+		
+		<header>
+			<a href="index.html"><img src="images/logo.png" alt="The logo for Foodar" /></a>
+		</header>
+
+		<h1 id="title">Register</h1>
+		<p>Please fill out the form below:</p>
+
+		<form action="#">
+			<div class="row">
+				<h5>Details:</h5>
+				<div class="colone">
+					<div><input type="email" placeholder="Email" name="email" required /></div>
+					<div><input type="password" placeholder="Password" name="password" required /></div>
+				</div>
+				<div class="coltwo">
+					<div><input type="text" placeholder="First Name" name="firstName" required /></div>
+					<div><input type="text" placeholder="Last Name" name="lastName" required /></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<h5>Address:</h5>
+				<div class="colone">
+					<div><input type="text" placeholder="Address" name="address" required /></div>
+					<div><input type="text" placeholder="Street" name="street" required /></div>
+				</div>
+				<div class="coltwo">
+					<div><input type="text" placeholder="City" name="city" required /></div>
+					<div><input type="text" placeholder="Zipcode" name="zipcode" required /></div>
+				</div>
+			</div>
+			
+			<button>Register</button>
+		</form>
+		
+		<footer>
+			<div class="bottom" id="footerOne">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="register.html">Register</a></li>
+					<li><a href="about.html">How it all works</a></li>
+				</ul>
+			</div>
+			<div class="bottom" id="footerTwo">
+				<ul>
+					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="#">Terms and Conditions</a></li>
+				</ul>
+			</div>
+			<div class="bottom" id="footerThree">
+				<ul>
+					<li><a href="#">Lucky you :)</a></li>
+				</ul>
+			</div>
+		</footer>
+	</body>
+
+</html>

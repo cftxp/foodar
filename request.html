@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Submit Your Request</title>
+		<style>
+		* {
+			box-sizing: content-box;
+			font-family: Arial, Helvetica, sans serif;
+		}
+		html {
+			height: 100%;
+		}
+		body {
+			height: 100%;
+		}
+		a {
+			text-decoration: none;
+			color: black;
+		}
+		a:hover {
+			text-decoration: underline;
+			color: rgb(0, 0, 255);
+		}
+		header {
+			width: 100%;
+			display: block;
+			clear: both;
+			height: 100px;
+		}
+		#main {
+			width: 90%;
+			margin: 0 auto;
+			padding-bottom: 1em;
+			box-sizing: content-box;
+		}
+			#title {
+				text-transform: uppercase;
+			}
+			.indent {
+				margin: 2em;
+			}
+			input {
+				padding: 1em;
+				width: 100%;
+			}
+			#restaurant, #submit {
+				display: inline-block;
+				margin-top: 2em;
+				width: 100%;
+			}
+			.radio {
+				display: inline-block;
+				width: 30%;
+				float: left;
+				text-align: center;
+				border: solid 1px black;
+				box-sizing: border-box;
+				padding: 1em;
+				height: 12.5em;
+			}
+				.select {
+					text-align: center;
+					display: inline-block;
+				}
+			#middle {
+				margin: 0 5%;
+			}
+			#total {
+				display: inline-block;
+				width: 100%;
+				margin-top: 1.5em;
+				text-align: center;
+			}
+			#submit {
+				text-align: center;
+			}
+				button {
+					padding: 1em;
+					text-transform: uppercase;
+					background-color: white;
+				}
+		footer {
+			width: 100%;
+			border-top: solid 1px black;
+		}
+			div.bottom {
+				width: 33.3%;
+				display: inline-block;
+				float: left;
+				box-sizing: content-box;
+			}
+			div.bottom ul {
+				list-style-type: none;
+				padding: 0;
+			}
+			#footerTwo {
+				text-align: center;
+			}
+			#footerThree {
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="images/logo.png" alt="The logo for Foodar"/></a></div>
+		</header>
+		<div id="main">
+			<h1 id="title">Submit Your Request!</h1>
+			<p>Please fill out the form below.</p>
+			<form action="#" method="get">
+				<div>
+					<div class="label"><label name="email">Address:</label></div>
+					<div class="indent"><input type="text" name="email" placeholder="Email"/></div>
+				</div>
+				<div class="options indent">
+					<div class="radio"><p>Classic</p><p>This is a classic treatment</p><div class="select"><input class="buy" type="radio" name="style" value="3"></div></div>
+					<div class="radio" id="middle"><p>Premium</p><p>Pinky's up</p><div class="select"><input class="buy" type="radio" name="style" value="5"></div></div>
+					<div class="radio"><p>Royal</p><p>Your food is served on a silver platter.</p><p>Literally.</p><div class="select"><input class="buy" type="radio" name="style" value="10"></div></div>
+				</div>
+				<div id="restaurant">
+					<div class="label"><label name="restaurant">Restaurant:</label></div>
+					<div class="indent"><input class="buy" type="text" name="restaurant" placeholder="Name"/></div>
+				</div>
+				<div class="options indent">
+					<div class="radio"><p>10%</p><p>They did their job.</p><div class="select"><input class="tip" type="radio" name="tip" value="1.1" /></div></div>
+					<div class="radio" id="middle"><p>15%</p><p>They made you feel special.</p><p class="select"><div class="select"><input class="tip" type="radio" name="tip" value="1.15" /></div></div>
+					<div class="radio"><p>20%</p><p>I wanna give them more, but this is all I have!</p><div class="select"><input class="tip" type="radio" name="tip" value="1.2" /></div></div>
+				</div>
+				<div id="total"><h1>Total: <span id="value">$0.00</span></h1></div>
+				<div id="submit"><button type="button">Request</button></div>
+			</form>
+		</div>
+		<footer>
+			<div class="bottom" id="footerOne">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="register.html">Register</a></li>
+					<li><a href="about.html">How it all works</a></li>
+				</ul>
+			</div>
+			<div class="bottom" id="footerTwo">
+				<ul>
+					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="#">Terms and Conditions</a></li>
+				</ul>
+			</div>
+			<div class="bottom" id="footerThree">
+				<ul>
+					<li><a href="#">Lucky you :)</a></li>
+				</ul>
+			</div>
+		</footer>
+		<script>
+			var buyArray = document.getElementsByClassName("buy");
+			var tipArray = document.getElementsByClassName("tip");
+			var totalArray = document.querySelectorAll("input[type='radio']");
+			var value = document.getElementById("value");
+			var price = "$0.00";
+			var bought;
+			var tip;
+
+			/* 
+				Initiate the cost calculation through a for loop that listens for a "click" event on any of the radio buttons for each selection.  
+
+				If a "click" event is detected, both the "packageSelected" and the "tipSelected" functions will be executed.
+			*/
+			for(i = 0; i < totalArray.length; i++){
+				totalArray[i].addEventListener("click", function(){
+					packageSelected();
+					tipSelected();
+				})
+			}
+
+			// This function loops all "buyArray" node items to determine whether a "buyArray" node item was selected.
+			function packageSelected(){
+				for(i = 0; i < buyArray.length; i++){
+					if(buyArray[i].checked){
+						whichPackage(buyArray[i]);
+						console.log(buyArray[i] + " was selected.");
+					}
+				}
+			}
+
+			/* 
+				If a "buyArray" node item was selected, extract its value, turn it into a number, then go forth with the cost calculation.
+
+				Note that both "bought" and "packageValue" are reset to 0.
+
+				This is to ensure that the "bought" variable will not simply add the values of every "tip" option that is clicked.
+			*/
+			function whichPackage(boughtItem){
+				bought = 0;
+				packageValue = 0;
+				packageValue = boughtItem.value;
+				bought += Number(packageValue);
+				cost();
+			}
+
+			// This function loops all "tipArray" node items to determine whether a "tipArray" node item was selected.
+			function tipSelected(){
+				for(i = 0; i < tipArray.length; i++){
+					if(tipArray[i].checked){
+						whichTip(tipArray[i]);
+						console.log(tipArray[i] + " was selected.");
+					}
+				}
+			}
+
+			/* 
+				If a "tipArray" node item was selected, extract its value, turn it into a number, then go forth with the cost calculation.  
+
+				Note that both "tip" and "tipValue" variables are reset to 0. 
+
+				This is to ensure that the "tip" variable will not simply add the values of every "tip" option that is clicked.
+			*/
+			function whichTip(tipAmount){
+				tip = 0;
+				tipValue = 0;
+				tipValue = tipAmount.value;
+				tip += Number(tipValue);
+				cost();
+			}
+
+			/* 
+				The cost calculation determines whether or not both the "bought" and the "tip" variables have a value.  
+
+				If so, the value is output.
+
+				Otherwise, the "cost" function will determine if "bought", "tip", or neither variable contains a value.  
+
+				If either "bought" or "tip" have values, their values will be output.
+
+				Otherwise, the default value of "$0.00" will be output.
+			*/
+			function cost(){
+				if(bought > 0 && tip > 0){
+					price = bought * tip;
+					value.innerHTML = "$" + price.toFixed(2).toString();
+				} else {
+					if(bought > 0){
+						value.innerHTML = "$" + bought;
+					} else if(tip > 0){
+						value.innerHTML = ((tip - 1)*100).toFixed(0) + "% tip";
+					} else {
+						value.innerHTML = "$0.00";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
